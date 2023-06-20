@@ -2,10 +2,20 @@
     --site-background-color: rgb(45,57,75);
     --site-text-color: rgb(113,174,234);
     --site-text-color-grey: rgb(126,133,110);
+    --site-text-orange: rgb(241,184,56)
 }
 
 body{
     min-height: 100vh;
     background: #000;
+    font-family: Roboto, 'sans-serif';
+    font-weight: bold;
 }
 
+h4{
+    font-weight: bold !important;
+}
+
+.text-grey{
+    color: var(--site-text-color);
+}

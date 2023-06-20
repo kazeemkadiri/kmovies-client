@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { loaderReducer } from './features/Loader'
 
 const persistConfig = {
   key: 'root',
@@ -20,7 +21,8 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  movies: moviesReducer
+  movies: moviesReducer,
+  loader: loaderReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
