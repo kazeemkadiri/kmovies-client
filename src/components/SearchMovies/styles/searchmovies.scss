@@ -1,0 +1,44 @@
+@media screen and (max-width: 567px) {
+    .search-input-container{
+    
+        input,
+        button{
+            border: none;
+            outline: 0px;
+            height: 100%;
+            padding: 0.5rem;
+        }
+
+        input{
+            color: #fff;
+            border-radius: 0px;
+            background-color: #111111;
+            width: 90%;
+
+            &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: #fff;
+                opacity: 0.5; /* Firefox */
+              }
+              
+            &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: #fff;
+              }
+              
+            &::-ms-input-placeholder { /* Microsoft Edge */
+                color: #fff;
+              }
+        }
+
+        input:focus{
+            box-shadow: 0 0 0 0.05rem var(--site-text-orange);
+        }
+
+        button{
+            color: var(--site-text-orange);
+            height: 100%;
+            width: 4rem;
+            line-height: 1.15;
+            background-color: #111111;
+        }
+    }
+}

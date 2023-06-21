@@ -1,0 +1,13 @@
+@media screen and (max-width: 567px) {
+    div.movie-card .wrapper{
+        position: relative !important;
+    }
+    
+    div.movie-card .card{
+        margin: 0px;
+    }
+
+    .movie-link{
+        margin-bottom: 5rem;
+    }
+}
