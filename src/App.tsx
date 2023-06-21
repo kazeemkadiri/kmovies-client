@@ -6,6 +6,7 @@ import Loader from './components/Loader/Loader'
 import { useAppSelector } from './hooks/useStore'
 import { RootState } from './redux/store'
 import SearchMovies from './components/SearchMovies/SearchMovies'
+import { toast } from 'react-toastify'
 
 function App() {
   const navigate = useNavigate()
@@ -16,6 +17,8 @@ function App() {
     if(location.pathname === '/') {
       navigate('/movies')
     }
+
+    toast.dismiss();
   },[location.pathname])
   
   return (

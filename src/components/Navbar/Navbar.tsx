@@ -18,7 +18,7 @@ const Navbar = () => {
         setSearchText(ev.target.value);
     }
 
-    const isMobileView = () => (innerWidth <= 567)
+    const isTabletViewDown = () => (innerWidth <= 992)
 
     const toggleCSSclasses = (el: HTMLElement, ...cls: string[]) => cls.map(cl => el.classList.toggle(cl))
 
@@ -26,14 +26,8 @@ const Navbar = () => {
     useEffect(() => {
         if(!navbarTogglerRef.current || !mainNavRef.current) return;
 
-        // For mobile devices, this hides the nav-menu on page load
-        if(navbarTogglerRef.current && isMobileView()){
-            mainNavRef.current.classList.add('d-none');
-            navbarTogglerRef.current.classList.remove('d-none');
-        } 
-
         const navbarTogglerListener = () => {
-            toggleCSSclasses(mainNavRef.current, 'd-none', 'active');
+            toggleCSSclasses(mainNavRef.current, 'active');
         }
 
         // This makes the nav-menu visible or invisible on mobile devices
@@ -96,7 +90,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="position-relative navbar-toggler d-none" ref={navbarTogglerRef}>
+                    <div className="position-relative navbar-toggler" ref={navbarTogglerRef}>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -117,7 +111,7 @@ const Navbar = () => {
                     ><Link to="#">{ CONSTANTS.OTHER_GENRES }</Link></li>
             
                 {/* Search box */}
-                <div className='search-input-container'>
+                <div className={`search-input-container ${isTabletViewDown() ? 'd-none' : ''}`}>
                     <input
                         type='text'
                         placeholder='Enter Keyword'
