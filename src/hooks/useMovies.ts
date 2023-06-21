@@ -1,10 +1,9 @@
 import { toast } from 'react-toastify'
-import axios from 'axios'
+import useAxios from './useAxios';
 
 const useMovies = () => {
-    // const baseURL = 'https://kmovies.fly.dev/api'
-    const baseURL = 'http://localhost:5000/api'
-
+    const { axiosPublic } = useAxios();
+    
     const displayErrMsg = (message: string) => {
         toast(message, { autoClose: 5000 })
     }
@@ -16,7 +15,7 @@ const useMovies = () => {
         })
 
         try{
-            const allMovies = await axios.get(`${baseURL}/movie/all`)
+            const allMovies = await axiosPublic.get(`/movie/all`)
 
             toast.dismiss()
 
@@ -40,7 +39,7 @@ const useMovies = () => {
                 isLoading: true,
             })
 
-            const moviesFound = await axios.post(`${baseURL}/movie/search`,{
+            const moviesFound = await axiosPublic.post(`/movie/search`,{
                 query
             })
 
@@ -66,7 +65,7 @@ const useMovies = () => {
                 isLoading: true,
             })
 
-            const response = await axios.get(`${baseURL}/movie/get/${movieId}`)
+            const response = await axiosPublic.get(`/movie/get/${movieId}`)
 
             toast.dismiss()
 
@@ -87,7 +86,7 @@ const useMovies = () => {
         try{
             toast(`Fetching movies by genres...${ genres.join(', ') }`,{ autoClose: false })
             
-            const response = await axios.post(`${baseURL}/movie/genres/get`, {genres})
+            const response = await axiosPublic.post(`/movie/genres/get`, {genres})
 
             toast.dismiss()
 
@@ -108,7 +107,7 @@ const useMovies = () => {
         try{
             toast(`Fetching movies by release year...`,{ autoClose: false })
             
-            const moviesRelYear = await axios.post(`${baseURL}/movie/release-year/get`, {releaseYear})
+            const moviesRelYear = await axiosPublic.post(`/movie/release-year/get`, {releaseYear})
     
             toast.dismiss()
             
