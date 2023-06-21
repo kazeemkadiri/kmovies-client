@@ -1,20 +1,16 @@
 import './styles/home.scss'
 import Hero from '../../components/Hero/Hero'
 import useMovies from '../../hooks/useMovies'
-import { useLocation, useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import type { TMDBMovie } from '../../types'
-import { useEffect, useState, useMemo, useRef } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import ReactPaginate from 'react-paginate'
 import MovieCard from '../../components/MovieCard/MovieCard'
-import { useAppDispatch } from '../../hooks/useStore'
 
 const HomePage = () => {
   const [allMovies, setAllMovies] = useState<TMDBMovie[]>([]);
   const { getAllMovies } = useMovies();
   const [pageMovies, setPageMovies] = useState<TMDBMovie[] | any[]>([])
-  const [currentPageNum, setCurrentPageNum] = useState<number>(1)
-  const [showNewPage, setShowNewPage] = useState<boolean>(false)
-  const navigate = useNavigate()
   const params = useParams() 
   const perPage = 24  
 
@@ -59,14 +55,10 @@ const HomePage = () => {
     document.querySelector('.gallery')!.scrollIntoView();
   }
 
-  const resetPagemovies = () => {
-    
-  }
-
   const handlePageClick = (data: any) => {
     if(data.selected === 0) return
     
-    setPageMovies((movies: TMDBMovie[]) => ([]))
+    setPageMovies(() => ([]))
 
     let offset = Math.ceil((data.selected + 1) * perPage);
 
@@ -85,7 +77,7 @@ const HomePage = () => {
           <div className="movies-list row">
               {
                 (pageMovies.length > 0) && pageMovies.map((movie: TMDBMovie) => {
-                  return <Link to={`/movie/${movie.id}`} className='col-md-3'><MovieCard movie={movie} /></Link>
+                  return <Link to={`/movie/${movie.id}`} className='col-md-3 movie-link'><MovieCard movie={movie} /></Link>
                 })  
               }
           </div>
@@ -114,12 +106,10 @@ const HomePage = () => {
             hrefAllControls={true}
             initialPage={0}
             // eslint-disable-next-line no-unused-vars
-            hrefBuilder={(page, pageCount, selected) =>
+            hrefBuilder={(page, pageCount) =>
               (page >= 1 && page <= pageCount ? `movies/page/${page}` : '#')
             }
-            onClick={(clickEvent) => {
-              return
-            }}
+            onClick={() => { return }}
           />
           </div>
         }   

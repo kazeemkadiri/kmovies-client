@@ -181,14 +181,6 @@
         }
     }
 
-    .navbar-toggler{
-        display: none;
-    }
-
-    .drop-down-menu{
-        display: none;
-    }
-
     @media screen and (max-width: 567px) {
         .social-icons{
             display: none !important;
@@ -199,7 +191,15 @@
             z-index: 1000;
             position: absolute;
             margin-top: 0rem;
+            width: 0%;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            transition: all .5s ease-in-out;
+        }
+
+        .nav-menu.active{
             width: 94%;
+            transition: all .5s ease-in-out;
         }
 
         .nav-menu li{
@@ -208,6 +208,7 @@
 
         .search-input-container{
             width: 100%;
+            padding: 1rem;
         }
 
         .search-input-container button{

@@ -8,10 +8,9 @@ import {
     faBookmark, faCheck, faThumbsUp
 } from '@fortawesome/free-solid-svg-icons'
 import NoImage from './../../assets/no-image.png'
-import NoBanner from './../../assets/no-banner.jpg'
 import './styles/fullmovie.scss'
 
-const FullMovie = (props: any) => {
+const FullMovie = () => {
     const location = useLocation()
     const params = useParams()
     const [movieFullDetails, setMovieFullDetails] = useState<MovieFullDetails | null>(null)
@@ -54,13 +53,13 @@ const FullMovie = (props: any) => {
     
     return (
         (movieFullDetails && movieFullDetails.mainMovie && movieFullDetails.mainMovie.id) ? 
-        (<section className='full-movie row p-0 m-0'>
+        (<section className='full-movie row justify-content-center p-0 m-0'>
             {/* Movie banner */}
-            <article className='col-12 p-0 d-flex flex-column justify-contents-center align-items-center position-relative' style={{ height: "360px" }}>
-                <img className='w-100 position-relative' style={{ height: 'auto' }} src={ hasContent('movieBanner') ? `${ moviesImagesRepo }${ getMovieBannerPath()}`: NoBanner } alt={ movieFullDetails.mainMovie.originalTitle }  />
+            <article className='col-12 p-0 d-flex flex-column justify-contents-center align-items-center position-relative' style={{ height: "360px", background: `url(${ moviesImagesRepo }${ getMovieBannerPath()})` }}>
+                {/* <img className='w-100 position-relative' style={{ height: 'auto' }} src={ hasContent('movieBanner') ? `${ moviesImagesRepo }${ getMovieBannerPath()}`: NoBanner } alt={ movieFullDetails.mainMovie.originalTitle }  /> */}
                 
                 {/* The video player is placed above the backdrop image */}
-                <div className='position-absolute w-100 text-center' style={{ top: '10px' }}>
+                <div className='position-relative w-100 text-center' style={{ top: '10px' }}>
                     { hasContent('movieVideos') 
                         && <VideoPlayer 
                                 movie={movieFullDetails.movieVideosFound[0]}
@@ -94,7 +93,7 @@ const FullMovie = (props: any) => {
                         {/* Movie trailers, featurettes */}
                         <div className="col-12">
                             <h4>Videos: Trailers, Teasers, Featurettes</h4>
-                            <div className="row">
+                            <div className="row video-trailers">
                                 { hasContent('movieVideos') ? movieFullDetails.movieVideosFound.map((video: TMDBMovie, index: number) => {
                                     if(index === 0){ return null }
                                     return (<div className="col-6" key={video.key}><VideoPlayer movie={video} options={{ height: '200', width: '100%' }} /></div>)

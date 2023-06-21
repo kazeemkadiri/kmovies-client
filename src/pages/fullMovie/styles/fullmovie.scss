@@ -3,3 +3,9 @@
         overflow: hidden;
     }
 }
+
+@media screen and (max-width: 567px) {
+    .video-trailers > div{
+        width: 100%;
+    }
+}

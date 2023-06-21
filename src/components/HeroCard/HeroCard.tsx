@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { TMDBMovie } from '../../types';
 import './styles/herocard.scss';
 

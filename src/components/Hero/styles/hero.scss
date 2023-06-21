@@ -35,3 +35,14 @@
         bottom: 0rem;
     }
 }
+
+@media screen and (max-width: 567px) {
+    .hero .hero-main{
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero .hero-cards{
+        display: none;
+    }
+}

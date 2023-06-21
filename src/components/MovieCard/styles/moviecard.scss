@@ -123,3 +123,23 @@ div.movie-card{
 .movie-card > img{
     display: none !important;
 }
+
+@media screen and (max-width: 567px){
+  .gallery{
+    justify-content: center !important;
+
+    .movie-link{
+      margin-bottom: 0rem !important;
+    }
+
+    .movies-list{
+      left: 0% !important;
+    }
+  
+    .movie-card{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

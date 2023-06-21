@@ -1,0 +1,17 @@
+.search-input-container.d-flex{
+    display: none !important;
+}
+
+@media screen and (max-width:567px){
+    .nav-menu .search-input-container{
+        display: none !important;
+    }
+
+    .navbar-container .nav-menu li.nav-dropdown-toggler{
+        display: none;
+    }
+
+    .search-input-container.d-flex{
+        display: flex !important;
+    }   
+}

@@ -1,14 +1,12 @@
 import { TMDBMovie } from "../../types";
 import MovieCard from '../../components/MovieCard/MovieCard'
-import slug from "slug"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react";
 import useMovies from "../../hooks/useMovies";
-import { useAppDispatch, useAppSelector } from "../../hooks/useStore";
-import { RootState } from "../../redux/store";
+import { useAppDispatch } from "../../hooks/useStore";
 import ReactPaginate from "react-paginate";
-import { SET_SEARCH_MOVIES_LIST, CLEAR_SEARCH_MOVIES_LIST } from "../../redux/actions";
 import { showLoader } from "../../redux/features/Loader";
+import './styles/search.scss';
 
 const SearchResults = () => {
     const navigate = useNavigate()
@@ -67,13 +65,6 @@ const SearchResults = () => {
       setPaginatedPageMovies( selectedMoviesList )
     },[moviesArr])
 
-    const saveSearchResultsToStore = (moviesArray: TMDBMovie[]) => {
-      dispatch({
-        type: SET_SEARCH_MOVIES_LIST,
-        payload: moviesArray
-      })
-    }
-
     const removeNonBgMovies = (movies: TMDBMovie[]) => {
       return movies.filter((movie: TMDBMovie) => (Boolean(movie.posterPath)))
     }
@@ -109,7 +100,9 @@ const SearchResults = () => {
           pageMovies.length > 0 
           && pageMovies.map((movie: TMDBMovie, index: number) => {
             return (
-              <Link to={`/movie/${movie.id}`} key={index} className='col-sm-12 col-md-3 col-lg-2 h-sm-auto mb-2' style={{ cursor: "pointer" }}><MovieCard movie={movie} /></Link>
+              <Link to={`/movie/${movie.id}`} key={index} className='col-sm-12 col-md-3 col-lg-2 movie-link' style={{ cursor: "pointer" }}>
+                <MovieCard movie={movie} />
+              </Link>
             )
           })
         }
@@ -137,12 +130,10 @@ const SearchResults = () => {
               hrefAllControls={true}
               initialPage={0}
               // eslint-disable-next-line no-unused-vars
-              hrefBuilder={(page, pageCount, selected) =>
+              hrefBuilder={(page, pageCount) =>
                 (page >= 1 && page <= pageCount ? `/movies/page/${page}` : '#')
               }
-              onClick={(clickEvent) => {
-                return
-              }}
+              onClick={() => { return }}
             />
           </div>
         }

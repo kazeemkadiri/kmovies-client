@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Loader from './components/Loader/Loader'
 import { useAppSelector } from './hooks/useStore'
 import { RootState } from './redux/store'
+import SearchMovies from './components/SearchMovies/SearchMovies'
 
 function App() {
   const navigate = useNavigate()
@@ -21,6 +22,8 @@ function App() {
     <>
       <div className='container site-bg-color'>
         <Navbar />
+        <SearchMovies />
+        <br />
         <section>
           <Outlet />
         </section>

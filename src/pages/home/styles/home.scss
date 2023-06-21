@@ -24,3 +24,9 @@ section.gallery{
     }
 
 }
+
+@media screen and (max-width: 567px) {
+    .gallery .movie-link{
+        margin-bottom: 5rem;
+    }
+}
