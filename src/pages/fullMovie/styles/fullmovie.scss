@@ -1,7 +1,26 @@
 .full-movie{
+
     article{
         overflow: hidden;
     }
+
+    .movie-trailers h3, .movie-trailers h5, .synopsis{
+        color: var(--site-text-color-grey) !important;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .movie-description{
+        & > div:nth-child(1){
+            width: 25%;
+            position: relative;
+        }
+
+        & > div:nth-child(2){
+            width: 75%;
+            position: relative;
+        }
+    } 
 }
 
 @media screen and (max-width: 567px) {

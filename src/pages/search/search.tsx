@@ -95,7 +95,7 @@ const SearchResults = () => {
     }
 
     return (
-        <section className="row mt-5">
+        <section className="row search-page">
         {
           pageMovies.length > 0 
           && pageMovies.map((movie: TMDBMovie, index: number) => {
@@ -108,7 +108,7 @@ const SearchResults = () => {
         }
         {
           pageMovies.length > 0 && 
-          <div className='col-12'>
+          <div className='col-12 pagination-buttons'>
             <ReactPaginate
               previousLabel="previous"
               nextLabel="next"

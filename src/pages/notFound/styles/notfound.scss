@@ -1,0 +1,24 @@
+.navbar-container{
+    padding:0rem;
+}
+
+.page-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .message-box{
+        background: rgba($color: #000000, $alpha: 0.3);
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    strong{
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+}

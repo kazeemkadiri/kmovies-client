@@ -1,32 +1,88 @@
-section.gallery{
-    background-image: url('gallery-bg.jpeg');
-    background-size: cover;
-    position: relative;
-
-    .hero{
-        overflow-y: hidden;
-    }
-
-    .overlay{
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0, 0.5);
-        z-index: 1;
-    }
-
-    .movies-list{
-        width: 86%;
+@media screen and (min-width: 993px) {
+    section.gallery{
         position: relative;
-        left: 7%;
-        z-index: 2;
+        display: flex;
+        justify-content: center;
+    
+        .hero{
+            overflow-y: hidden;
+        }
+    
+        .movies-list{
+            width: 86%;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .movie-link{    
+            margin-bottom: 3rem !important;
+        }
+
+        .movie-title{
+            bottom: -1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    section.gallery{
+        margin-top: 8rem;
+
+        .movie-link{
+            margin-bottom: 18rem !important;
+        }
+
+        div.movie-card .movie-title{
+            position: relative;
+            top: 7rem;
+        }
+    }
+
+    .pagination-buttons{
+        position: relative;
+        z-index: 10;
+        top: -10rem;
     }
 
 }
 
 @media screen and (max-width: 567px) {
-    .gallery .movie-link{
-        margin-bottom: 5rem;
+    section.gallery {
+        flex-wrap: wrap;
+
+        .movie-link{
+            width: 70%;
+            height: 20rem !important;
+            position: relative;
+        }
+
+        div.movie-card .movie-title{
+            bottom: 9rem;
+        }
+
+        .movie-link{
+            margin-bottom: 0rem;
+            margin-top: 0rem;
+        }
+      
+        .movies-list{
+            justify-content: center;
+        }
+    
+        .movie-card{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .movie-card .wrapper{
+            height: 30rem;
+        }
+    }  
+    
+    div.movie-card .movie-overview-bg{
+        display: none;
     }
+
+    
 }

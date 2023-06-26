@@ -23,7 +23,7 @@ function App() {
   
   return (
     <>
-      <div className='container site-bg-color'>
+      <div className='container site-bg-color h-100'>
         <Navbar />
         <SearchMovies />
         <br />

@@ -1,10 +1,77 @@
 div.movie-card{
-    height: 20rem;
+    height: 100%;
     padding: 0px;
     margin: 0px;
     width: 100%;
     position: relative;
     border-radius: 10px;
+
+    .movie-overview, .movie-overview-bg{
+      opacity: 0;
+    }
+
+    .movie-overview-bg{
+      width: 100%;
+      height: 95%;
+      top: 0%;
+      background: rgba(0,0,0, 0.8);
+      position: relative;
+      overflow-y: scroll;
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
+      opacity: 0;
+      z-index: 6;
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .movie-title{
+      opacity: 1;
+      color: #fff;
+      background: #000;
+      position: absolute;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      bottom: 0px;
+      padding: 0.5rem 0.2rem;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      text-align: center;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .movie-overview-bg::-webkit-scrollbar{
+      display: none;
+    }
+
+    &:hover{
+      .movie-overview{
+        width: 100%;
+        height: 100%;
+        color: #fff; 
+        padding: 0.8rem ;
+        position: absolute;
+        opacity: 1;
+        text-decoration: none;
+        transition: opacity 0.7s;
+      }
+
+      .movie-overview-bg{
+        opacity: 1;
+        transition: opacity 0.7s;
+      }
+
+      .movie-title{
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+      }
+    }
 
     img{
         position: relative;
@@ -26,13 +93,12 @@ div.movie-card{
       .card {
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: relative;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
-        padding: 0 36px;
+        align-items: center;
         perspective: 2500px;
-        margin: 0 50px;
+        margin: 0rem;
         z-index: 3;
         background: none;
         border: 0;
@@ -49,6 +115,11 @@ div.movie-card{
         position: absolute;
         width: 100%;
         z-index: -1;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        border-bottom: none;
+        background: rgb(50,9,11);
+        overflow: hidden;
       }
       
       .card:hover .wrapper {
@@ -79,7 +150,7 @@ div.movie-card{
         );
       }
       .wrapper::after {
-        bottom: 0;
+        bottom: -10px;
         opacity: 1;
         background-image: linear-gradient(
           to bottom,
@@ -95,12 +166,15 @@ div.movie-card{
       }
       
       .card:hover .wrapper::after {
-        height: 120px;
+        height: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
       }
       .title {
         width: 100%;
         transition: transform 0.5s;
       }
+
       .card:hover .title {
         transform: translate3d(0%, -50px, 100px);
       }
@@ -116,8 +190,7 @@ div.movie-card{
       .card:hover .character {
         opacity: 1;
         transform: translate3d(0%, -30%, 100px);
-      }
-      
+      }      
 }
 
 .movie-card > img{
@@ -125,21 +198,7 @@ div.movie-card{
 }
 
 @media screen and (max-width: 567px){
-  .gallery{
+  section.gallery{
     justify-content: center !important;
-
-    .movie-link{
-      margin-bottom: 0rem !important;
-    }
-
-    .movies-list{
-      left: 0% !important;
-    }
-  
-    .movie-card{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 }

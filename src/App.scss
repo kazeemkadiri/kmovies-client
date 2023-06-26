@@ -1,9 +1,15 @@
-.search-input-container.d-flex{
-    display: none !important;
+.movie-link{
+    height: 17rem;
+}
+
+@media  screen and (max-width: 992px){
+    .hero-card .movie-overview, .movie-overview-bg, .navbar-container .links-container{
+        display: none !important;
+    }
 }
 
 @media screen and (max-width:567px){
-    .nav-menu .search-input-container{
+    .nav-menu .nav-search-input-container{
         display: none !important;
     }
 

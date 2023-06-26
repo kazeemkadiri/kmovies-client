@@ -3,6 +3,8 @@ import { TMDBMovie } from '../../types';
 
 const VideoPlayer = (props: { movie: TMDBMovie, options?: { height: string, width: string } }) => {
     const { height, width } = props.options || {};
+    
+    console.log('width', width);
 
     const ytPlayerOpts = {
         height: height ? height : '360',

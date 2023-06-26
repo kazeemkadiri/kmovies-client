@@ -1,6 +1,7 @@
 .navbar-container{
     // background-color: var(--site-background-color);
     color: var(--site-text-color);
+    padding: 0rem;
 
     .logo{
         font-size: 1.4rem;
@@ -54,7 +55,6 @@
 
     .nav-menu{
         display: flex;
-        background: #2b2b2b;
         width: 100%;
         padding: 0px;
         margin-top: 0.8rem; 
@@ -75,7 +75,7 @@
             height: 3px;
             left: 50%;
             right: 50%;
-            bottom: 0px;
+            bottom: -3px;
             width: 0%;
             opacity: 1;
             position:relative;
@@ -84,8 +84,7 @@
 
         li a{
             color: #fff;
-            padding-bottom: 0.8rem;
-            padding-top: 1rem;
+            padding-bottom: 0.2rem;
             font-size: 1rem;
             font-weight: 300;
             text-decoration: none;
@@ -135,12 +134,19 @@
         }
     }
 
-    .search-input-container{
+    .links-container{
+        width: 100%;
+        background: #2b2b2b;
+        height: 3rem;
+        top: 1rem;
+    }
+
+    .nav-search-input-container{
         width: auto;
         display: flex;
         align-items: center;
         position: relative;
-        left: 40px;
+        left: 0%;
     
         input,
         button{
@@ -198,9 +204,9 @@
         .nav-menu.active{
             flex-direction: column;
             z-index: 1000;
-            position: absolute;
+            position: relative;
             margin-top: 0rem;
-            width: 85%;
+            width: 100%;
             border-bottom-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
             transition: all .5s ease-in-out;
@@ -238,11 +244,9 @@
             background: #fff;
             position: relative;
         }
-    }
 
-    @media screen and (max-width: 567px) {
-        .nav-menu.active{
-            width: 95%;
+        .nav-search-input-container{
+            display: none;
         }
     }
 

@@ -17,7 +17,7 @@ const SearchMovies = () => {
     }
 
   return (
-    <div className='search-input-container w-100 d-flex'>
+    <div className='search-input-container w-100'>
         <input
             type='text'
             placeholder='Enter Keyword'

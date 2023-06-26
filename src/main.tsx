@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import HomePage from './pages/home/home'
 import FullMoviePage from './pages/fullMovie/FullMovie'
 import SearchPage from './pages/search/search'
+import NotFoundPage from './pages/notFound/notFound'
 import { Provider } from 'react-redux'
 import { persistor, store } from './redux/store.ts'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -40,8 +41,12 @@ const router = createBrowserRouter([
         path: "genre/:genre",
         element: <SearchPage />
       }
-    ]
+    ],
   },
+  {
+    path: "*",
+    element: <NotFoundPage />
+  }
 ]);
 
 

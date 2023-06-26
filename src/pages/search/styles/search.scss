@@ -1,13 +1,67 @@
-@media screen and (max-width: 567px) {
-    div.movie-card .wrapper{
-        position: relative !important;
-    }
+section.search-page{
     
-    div.movie-card .card{
-        margin: 0px;
+   .movie-link{
+        .movie-overview-bg{
+            position: relative;
+            height: 88%;
+            top: 6%;
+        }
+    }      
+    
+    .pagination-buttons{
+        margin-top: 3rem;
     }
+}
 
-    .movie-link{
-        margin-bottom: 5rem;
+@media  screen and (max-width: 992px){
+    section.search-page{
+        position: relative;
+        top: 6rem;
+
+        .movie-link{
+            margin-top: 4rem;
+            margin-bottom: 15rem;
+        }
+
+        .movie-title{
+            bottom: -7rem;
+        }
+
+        .movie-overview-bg{
+            position: absolute;
+            height: 100%;
+        }
+
+        .movie-link .movie-overview-bg {
+            // height: 29rem;
+            top: -35%;
+            position: absolute;
+        }
+    }
+}
+
+@media screen and (max-width: 567px) {
+    section.search-page{
+        top: -2rem;
+
+        .movie-link{
+            width: 50% !important;
+            top: 1rem;
+            position: relative;
+        }
+
+        .movie-title{
+            bottom: -12rem;
+        }
+
+        .pagination-buttons{
+            margin-top: 0rem;
+            top: 3rem;
+        }
+
+        .wrapper{
+            top: -2rem;
+            height: 30rem;
+        }
     }
 }

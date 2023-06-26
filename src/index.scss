@@ -5,9 +5,13 @@
     --site-text-orange: rgb(241,184,56)
 }
 
+html{
+ font-size: 16px;
+}
+
 body{
     min-height: 100vh;
-    background: #000;
+    background: #232121;
     font-family: Roboto, 'sans-serif';
     font-weight: bold;
 }
@@ -18,4 +22,15 @@ h4{
 
 .text-grey{
     color: var(--site-text-color);
+}
+
+@media screen and (max-width: 992px) {
+    html{
+        font-size: 62.5% !important;
+    }
+
+    .movie-link{
+        height: 18rem !important;
+        width: 33.33%;
+    }
 }

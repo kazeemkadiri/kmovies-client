@@ -3,12 +3,9 @@ import useMovies from '../../hooks/useMovies';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { MovieFullDetails, TMDBMovie } from '../../types';
 import VideoPlayer from '../../components/VideoPlayer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faBookmark, faCheck, faThumbsUp
-} from '@fortawesome/free-solid-svg-icons'
-import NoImage from './../../assets/no-image.png'
-import './styles/fullmovie.scss'
+import NoImage from './../../assets/no-image.png';
+import NoBanner from './../../assets/no-banner.jpg';
+import './styles/fullmovie.scss';
 
 const FullMovie = () => {
     const location = useLocation()
@@ -56,33 +53,36 @@ const FullMovie = () => {
         (<section className='full-movie row justify-content-center p-0 m-0'>
             {/* Movie banner */}
             <article className='col-12 p-0 d-flex flex-column justify-contents-center align-items-center position-relative' style={{ height: "360px", background: `url(${ moviesImagesRepo }${ getMovieBannerPath()})` }}>
-                {/* <img className='w-100 position-relative' style={{ height: 'auto' }} src={ hasContent('movieBanner') ? `${ moviesImagesRepo }${ getMovieBannerPath()}`: NoBanner } alt={ movieFullDetails.mainMovie.originalTitle }  /> */}
+                <img className='w-100 h-100 position-absolute' style={{ zIndex: 49 }} src={ hasContent('movieBanner') ? `${ moviesImagesRepo }${ getMovieBannerPath()}`: NoBanner } alt={ movieFullDetails.mainMovie.originalTitle }  />
                 
                 {/* The video player is placed above the backdrop image */}
-                <div className='position-relative w-100 text-center' style={{ top: '10px' }}>
+                <div 
+                    className='position-relative w-100 h-100 text-center d-flex align-items-center justify-content-center' 
+                    style={{ top: '0px', backgroundColor: !hasContent('movieVideos') ? "rgba(0,0,0,0.7)" : "none", zIndex: 50 }}>
                     { hasContent('movieVideos') 
-                        && <VideoPlayer 
+                        ? <VideoPlayer 
                                 movie={movieFullDetails.movieVideosFound[0]}
-                                options={{ width: '90%', height: String(Math.floor(340)) }} 
+                                options={{ width: String(innerWidth - Math.floor(0.2 * innerWidth)), height: "340" }} 
                             /> 
+                        : <h4 className='text-white'>No trailers were found for this movie</h4>
                     }
                 </div>
             </article>
 
             {/* The movie description and features section */}
-            <div className='row align-items-sm-start justify-content-center mt-3'>
+            <div className='row align-items-sm-start justify-content-between mt-5 px-0 movie-description'>
                 {/* An avatar picture section */}
-                <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center justify-contents-center p-3" style={{ width: isMobileView() ? '100%': '300px' }}>
+                <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center justify-contents-center ps-0">
                     <img className='w-100 position-relative ' src={ hasContent('moviePoster') ? `${ moviesImagesRepo }${ getMoviePosterPath()}` : NoImage } alt={ movieFullDetails.mainMovie.originalTitle }  />
-                    <section className='w-100 d-flex justify-content-between text-white p-3  movie_actions'>
+                    {/* <section className='w-100 d-flex justify-content-between text-white p-3  movie_actions'>
                         <span className='d-flex flex-column align-items-center'><FontAwesomeIcon icon={ faBookmark } className='mb-2' /> WatchList</span>
                         <span className='d-flex flex-column align-items-center'><FontAwesomeIcon icon={ faCheck } className='mb-2' /> Seen</span>
                         <span className='d-flex flex-column align-items-center'><FontAwesomeIcon icon={ faThumbsUp } className='mb-2' /> Like</span>
-                    </section>
+                    </section> */}
                 </div>
 
                 {/* Descriptions */}
-                <div className="col-sm-12 col-md-8 p-3">
+                <div className="col-sm-12 col-md-8 pe-0">
                     <div className='row'>
                         {/* Movie title header */}
                         <div className="d-flex align-items-end col-12">
@@ -91,8 +91,8 @@ const FullMovie = () => {
                         </div>
 
                         {/* Movie trailers, featurettes */}
-                        <div className="col-12">
-                            <h4>Videos: Trailers, Teasers, Featurettes</h4>
+                        <div className="col-12 movie-trailers">
+                            <h3>Videos: Trailers, Teasers, Featurettes</h3>
                             <div className="row video-trailers">
                                 { hasContent('movieVideos') ? movieFullDetails.movieVideosFound.map((video: TMDBMovie, index: number) => {
                                     if(index === 0){ return null }
@@ -104,8 +104,8 @@ const FullMovie = () => {
                         </div>
 
                         {/* SYNOPSIS */}
-                        <div className="col-12 mt-3">
-                            <h3>SYNOPSIS</h3>
+                        <div className="col-12 mt-3 synopsis">
+                            <h4>SYNOPSIS</h4>
                             <p >{ movieFullDetails.mainMovie.overview }</p>
                         </div>
                     </div>

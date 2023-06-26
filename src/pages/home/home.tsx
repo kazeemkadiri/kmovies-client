@@ -68,12 +68,12 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className='py-3'>
       {/* Hero */}
       { allMovies.length > 0 && <Hero movies={allMovies} /> }
 
         {/* Gallery */}
-        <section className="gallery row py-5 justify-content-start">
+        <section className="gallery row py-5">
           <div className="movies-list row">
               {
                 (pageMovies.length > 0) && pageMovies.map((movie: TMDBMovie) => {
@@ -82,7 +82,7 @@ const HomePage = () => {
               }
           </div>
         </section>
-        <section>
+        <section className='pagination-buttons'>
         {
           <div className={`col-12 ${pageMovies.length === 0 ? 'd-none': ''}`}>
           <ReactPaginate

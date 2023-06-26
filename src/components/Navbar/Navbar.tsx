@@ -35,7 +35,7 @@ const Navbar = () => {
 
         // Listener function for the nav-menu
         const mainNavListener = () => {
-            navbarTogglerRef.current && mainNavRef.current.classList.add('d-none');
+            isTabletViewDown() && mainNavRef.current.classList.add('d-none');
         }
 
         // This makes the nav-menu invisible
@@ -98,20 +98,19 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Nav links for PC */}
-            <ul className='nav-menu' ref={mainNavRef}>
-                <li className='nav-item'><Link to="/">HOME</Link></li>
-                {
-                    navMenuItems.slice(0,6).map((menuItem: string) => {
-                        return <li className='nav-item'><Link to={`/genre/${ menuItem.toLowerCase() }`}>{ menuItem.toUpperCase() }</Link></li>
-                    })
-                }
-                <li 
-                    className='nav-item nav-dropdown-toggler' 
-                    ><Link to="#">{ CONSTANTS.OTHER_GENRES }</Link></li>
-            
+            <div className='d-flex links-container'>
+                {/* Nav links for PC */}
+                <ul className='nav-menu' ref={mainNavRef}>
+                    <li className='nav-item'><Link to="/">HOME</Link></li>
+                    {
+                        navMenuItems.slice(0,6).map((menuItem: string) => {
+                            return <li className='nav-item'><Link to={`/genre/${ menuItem.toLowerCase() }`}>{ menuItem.toUpperCase() }</Link></li>
+                        })
+                    }
+                </ul>
+
                 {/* Search box */}
-                <div className={`search-input-container ${isTabletViewDown() ? 'd-none' : ''}`}>
+                <div className={`nav-search-input-container ${isTabletViewDown() ? 'd-none' : ''}`}>
                     <input
                         type='text'
                         placeholder='Enter Keyword'
@@ -120,19 +119,7 @@ const Navbar = () => {
                         />
                     <button type="button" onClick={searchForMovie}><FontAwesomeIcon icon={faSearch} /></button>
                 </div>
-            </ul>
-            <ul 
-                className={`drop-down-menu ${showDropdown ? '' : 'd-none'}`} 
-                id="other-genres" 
-                >
-                {/* Dropdown menu for other genres */}
-                {
-                    navMenuItems.slice(6).map((menuItem: string) => {
-                        return <li className='nav-item'><Link to={`/genre/${ menuItem.toLowerCase() }`}>{ menuItem }</Link></li>
-                    })
-                }
-                
-            </ul>
+            </div>            
         </div>
   )
 }
