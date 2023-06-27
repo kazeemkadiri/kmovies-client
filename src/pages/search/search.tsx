@@ -3,10 +3,11 @@ import MovieCard from '../../components/MovieCard/MovieCard'
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react";
 import useMovies from "../../hooks/useMovies";
-import { useAppDispatch } from "../../hooks/useStore";
+import { useAppDispatch, useAppSelector } from "../../hooks/useStore";
 import ReactPaginate from "react-paginate";
 import { showLoader } from "../../redux/features/Loader";
 import './styles/search.scss';
+import { RootState } from "../../redux/store";
 
 const SearchResults = () => {
     const navigate = useNavigate()
@@ -51,8 +52,6 @@ const SearchResults = () => {
         navigate('/movies')
       }
 
-     
-
       return () => { setMoviesArr([]) }
     }, [searchquery, genreQuery, navigate])
 
@@ -70,7 +69,6 @@ const SearchResults = () => {
     }
 
     const setPaginatedPageMovies = (movies: TMDBMovie[]) => {
-
         setPageMovies( movies )
     }
 
@@ -78,8 +76,19 @@ const SearchResults = () => {
       window.scrollTo(0,0)
     }
 
+    useEffect(() => {
+      if(pageMovies.length === 0) return
+
+      setTimeout(() => {
+       hideLoader()
+      }, 1000)
+
+    },[pageMovies])
+
     const handlePageClick = (data: any) => {
       scrollToTop()
+      
+      displayLoader();
 
       let selected = data.selected
     
@@ -137,6 +146,7 @@ const SearchResults = () => {
             />
           </div>
         }
+        
       </section>
     )
 } 

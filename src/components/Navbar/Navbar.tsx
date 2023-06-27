@@ -6,10 +6,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     const navMenuItems = useMemo(() => (['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir']), []);
-    const [showDropdown, setShowDropdown] = useState(false);
-    const CONSTANTS = {
-        OTHER_GENRES: "OTHER GENRES"
-    }
     const [searchText, setSearchText ] = useState<string>("");
     const navigate = useNavigate();
     const navbarTogglerRef = useRef<null | any>(null);
@@ -35,7 +31,7 @@ const Navbar = () => {
 
         // Listener function for the nav-menu
         const mainNavListener = () => {
-            isTabletViewDown() && mainNavRef.current.classList.add('d-none');
+            isTabletViewDown() && mainNavRef.current.classList.remove('active');
         }
 
         // This makes the nav-menu invisible
@@ -46,17 +42,6 @@ const Navbar = () => {
             mainNavRef.current.removeEventListener('click', mainNavListener)
         }
     },[navbarTogglerRef.current, mainNavRef.current]);
-
-    // The listener in this hook is used to hide the dropdown if any other nav-item is clicked
-    useEffect(() => {
-        document.querySelector('.nav-dropdown-toggler')?.addEventListener('mouseover', () => { setShowDropdown(true); })
-
-        document.querySelectorAll('.nav-menu li.nav-item:not(.nav-dropdown-toggler)').forEach(navitem => {
-            navitem.addEventListener('mouseenter', () => { setShowDropdown(false); })
-        })
-
-        document.body.addEventListener('click', () => { setShowDropdown(false); })
-    },[]);
 
     const searchForMovie = () => {
         navigate(`/search/${searchText}`);
@@ -98,9 +83,9 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className='d-flex links-container'>
+            <div className='d-flex links-container' ref={mainNavRef}>
                 {/* Nav links for PC */}
-                <ul className='nav-menu' ref={mainNavRef}>
+                <ul className='nav-menu'>
                     <li className='nav-item'><Link to="/">HOME</Link></li>
                     {
                         navMenuItems.slice(0,6).map((menuItem: string) => {

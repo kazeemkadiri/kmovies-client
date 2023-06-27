@@ -43,9 +43,12 @@ section.search-page{
 @media screen and (max-width: 567px) {
     section.search-page{
         top: -2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         .movie-link{
-            width: 50% !important;
+            width: 80% !important;
             top: 1rem;
             position: relative;
         }
