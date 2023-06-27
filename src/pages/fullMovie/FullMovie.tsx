@@ -42,8 +42,6 @@ const FullMovie = () => {
         }       
     }
 
-    const isMobileView = () => ( innerWidth <= 567 )
-
     if(!(movieFullDetails && movieFullDetails.mainMovie && movieFullDetails.mainMovie.id)){
         return <></>
     }

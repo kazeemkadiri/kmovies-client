@@ -3,11 +3,10 @@ import MovieCard from '../../components/MovieCard/MovieCard'
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react";
 import useMovies from "../../hooks/useMovies";
-import { useAppDispatch, useAppSelector } from "../../hooks/useStore";
+import { useAppDispatch } from "../../hooks/useStore";
 import ReactPaginate from "react-paginate";
 import { showLoader } from "../../redux/features/Loader";
 import './styles/search.scss';
-import { RootState } from "../../redux/store";
 
 const SearchResults = () => {
     const navigate = useNavigate()
