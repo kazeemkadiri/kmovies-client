@@ -6,6 +6,7 @@ import VideoPlayer from '../../components/VideoPlayer';
 import NoImage from './../../assets/no-image.png';
 import NoBanner from './../../assets/no-banner.jpg';
 import './styles/fullmovie.scss';
+import { toast } from 'react-toastify';
 
 const FullMovie = () => {
     const location = useLocation()
